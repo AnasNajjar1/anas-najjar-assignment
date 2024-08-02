@@ -12,16 +12,29 @@ const Container = styled.div`
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    padding: 20px;
+  }
 `;
 
 const Header = styled.header`
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const Title = styled.h1`
   color: #4f4f4f;
   font-size: 18px;
   line-height: 27px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -29,6 +42,11 @@ const Subtitle = styled.p`
   font-size: 12px;
   line-height: 18px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
 `;
 
 const FormRow = styled.div`
@@ -37,7 +55,7 @@ const FormRow = styled.div`
   width: 100%;
   margin-bottom: 10px;
   animation: fadeIn 0.5s ease-in;
-  
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -46,6 +64,11 @@ const FormRow = styled.div`
       opacity: 1;
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
 `;
 
 const Label = styled.label`
@@ -53,6 +76,12 @@ const Label = styled.label`
   width: 48%;
   font-size: 14px;
   padding-top: 10px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 12px;
+    padding-top: 5px;
+  }
 `;
 
 const Input = styled.input`
@@ -62,10 +91,17 @@ const Input = styled.input`
   border-radius: 8px;
   font-size: 14px;
   transition: border-color 0.3s ease;
-  
+
   &:focus {
     border-color: #2f80ed;
     outline: none;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 5px;
   }
 `;
 
@@ -79,15 +115,20 @@ const Button = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease;
   margin-top: 20px;
-  
+
   &:hover {
     background-color: #1d66c5;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
   }
 `;
 
 const ResultData = ({ data, setData, setFile }) => {
   const history = useHistory();
-  console.log("data ", data);
 
   /**
    * Handle retry action by resetting data and navigating back to the upload page.

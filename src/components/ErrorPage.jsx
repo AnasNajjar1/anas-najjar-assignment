@@ -12,8 +12,12 @@ const Container = styled.div`
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-`;
 
+  @media (max-width: 768px) {
+    min-width: 100%;
+    padding: 20px;
+  }
+`;
 
 const Message = styled.p`
   color: #4f4f4f;
@@ -22,6 +26,11 @@ const Message = styled.p`
   margin-bottom: 20px;
   text-align: center;
   color: red;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 `;
 
 const Button = styled.button`
@@ -37,9 +46,15 @@ const Button = styled.button`
   align-items: center; /* Centers text vertically */
   justify-content: center; /* Centers text horizontally */
   height: 42px; /* Adjust the height to match Upload button */
-  
+
   &:hover {
     background-color: #1d66c5;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 12px;
+    padding: 8px;
   }
 `;
 

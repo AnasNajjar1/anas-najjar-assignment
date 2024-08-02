@@ -11,22 +11,39 @@ const Frame = styled.div`
   justify-content: center;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    min-width: 100%;
+    padding: 20px;
+  }
 `;
 
 const Header = styled.header`
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const Title = styled.h1`
   color: #4f4f4f;
   font-size: 18px;
   line-height: 27px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Subtitle = styled.p`
   color: ${(props) => (props.color ? "firebrick" : "#828282")};
   font-size: 10px;
   line-height: 15px;
+
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 const DragNDrop = styled.div`
@@ -40,6 +57,13 @@ const DragNDrop = styled.div`
   border-radius: 12px;
   border: 1px dashed;
   border-color: ${(props) => (props.picture === "true" ? "green" : "#97BEF4")};
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
 `;
 
 const DnDText = styled.p`
@@ -47,6 +71,10 @@ const DnDText = styled.p`
   line-height: 18px;
   letter-spacing: -0.035em;
   color: #bdbdbd;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const Preview = styled.img`
@@ -63,7 +91,12 @@ const Or = styled.p`
   letter-spacing: -0.035em;
   color: #bdbdbd;
   margin: 1em;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
+
 const Button = styled.p`
   font-size: 12px;
   line-height: 16px;
@@ -74,6 +107,18 @@ const Button = styled.p`
   border: none;
   border-radius: 8px;
   color: #ffffff;
+  cursor: pointer;
+  margin: 10px 0;
+
+  &:hover {
+    background-color: ${(props) =>
+      props.color === "cancel" ? "darkred" : "#1d66c5"};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
 `;
 
 const Loading = styled.div`
@@ -82,14 +127,25 @@ const Loading = styled.div`
   line-height: 27px;
   letter-spacing: -0.035em;
   text-align: start;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    font-size: 16px;
+  }
 `;
+
 const Loader = styled.div`
   margin-top: 30px;
   width: 340px;
   height: 6px;
   background: #f2f2f2;
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
+
 const LoaderBar = styled.div`
   height: 6px;
   background: #2f80ed;
@@ -146,7 +202,7 @@ const Upload = ({
     );
   }
 
-   // Display loading state while data is being processed
+  // Display loading state while data is being processed
   if (loading && !data)
     return (
       <Loading>
@@ -157,7 +213,7 @@ const Upload = ({
       </Loading>
     );
 
-    // Display result data if extraction is successful
+  // Display result data if extraction is successful
   if (!loading && data)
     return <ResultData data={data} setData={setData} setFile={setFile} />;
   return (

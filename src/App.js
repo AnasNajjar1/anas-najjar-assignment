@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import styled from "styled-components";
 
 import Upload from "./components/Upload";
@@ -16,19 +16,31 @@ const Main = styled.div`
   align-items: center;
   justify-content: center;
   padding-bottom: 30px;
+  padding: 10px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const Frame = styled.div`
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
 `;
 
 const Footer = styled.footer`
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 30px;
+  text-align: center;
+  font-size: 12px;
+  position: fixed;
+  bottom: 0;
+  background-color: #fafafb;
+  padding: 10px 0;
 `;
 
 const App = () => {
@@ -79,28 +91,32 @@ const App = () => {
   };
 
   return (
-    <Main className="App">
-      <Frame>
-        <Switch>
-          <Route path="/" exact>
-            <Upload
-              error={error}
-              setError={setError}
-              handleFile={(event) => handleFile(event, handleError, setImgFile, setImgPreviewUri)}
-              onDragOver={onDragOver}
-              imgPreviewUri={imgPreviewUri}
-              setImgPreviewUri={setImgPreviewUri}
-              uploadPicture={handleSubmit}
-              loading={loading}
-              data={extractedData}
-              setData={setExtractedData}
-              setFile={setImgPreviewUri}
-            />
-          </Route>
-        </Switch>
-      </Frame>
+    <div className="App">
+      <Main>
+        <Frame>
+          <Router>
+            <Switch>
+              <Route path="/" exact>
+                <Upload
+                  error={error}
+                  setError={setError}
+                  handleFile={(event) => handleFile(event, handleError, setImgFile, setImgPreviewUri)}
+                  onDragOver={onDragOver}
+                  imgPreviewUri={imgPreviewUri}
+                  setImgPreviewUri={setImgPreviewUri}
+                  uploadPicture={handleSubmit}
+                  loading={loading}
+                  data={extractedData}
+                  setData={setExtractedData}
+                  setFile={setImgPreviewUri}
+                />
+              </Route>
+            </Switch>
+          </Router>
+        </Frame>
+      </Main>
       <Footer>By Anas Najjar</Footer>
-    </Main>
+    </div>
   );
 };
 
